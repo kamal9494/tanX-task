@@ -6,6 +6,11 @@
 - JSON Server
 - Universal Cookie - storing JWT
 
+## Demo URL
+
+Successfully Deployed at https://tanx-task.vercel.app/  (with working backend)
+
+
 ## Features
 
 ### User Authentication `/login`, `/register`
@@ -28,6 +33,7 @@
  - Each Product Card has 2 button's with following functionalities 
     1. `❤️` - **Add to Favorites**.
     2. `🛒` - **Add to Cart**
+    3. Click on any product picture to open its description page.
  
 ### Screenshots
 #### Products Page
