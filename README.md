@@ -1,81 +1,77 @@
-# Ecommerce (React) Coding Assessment
+## Tech Stack
 
-## Overview
+**Client:** React.js, Redux, TailwindCSS
 
-To complete this assessment, you will need to use this [Ecommerce-boilerplate](https://github.com/gurukishore111/Ecommerce-boilerplate) web app.
+## Features
+### User Authentication
+ - Users can login with an `email` and `password`.
+ - Users can register with an `name`, `email` and `password`.
+ - Implemented basic validation. After successful login or signup user will navigate to `/`. (products page)
+ - In order to access the `/favourites`, `/orders` pages or `to place an order` user should login first.
 
-The purpose of this assessment is to assess your **skills and approach to composing a simple web app** given an API feed.
+#### Login Page Preview
+![image](https://github.com/kamal9494/tanX-task/assets/97849725/056df49b-d05a-4dab-8b60-d348a0f278db)
 
-## What to do?
+#### Register Page Preview
+![image](https://github.com/kamal9494/tanX-task/assets/97849725/203178f8-2346-45a9-8638-dcad48dc42dd)
 
-Your goal is to implement an eCommerce application. The CSS framework/library is totally up to you.
 
-Although it's a very basic exercise, we will be looking for simple, well-designed, well-commented, and tested code in the submission.
+### Products `/`
+ - Products are listed on the this page.
+ - Each Product Card has 2 button's with following functionalities 
+    1. `❤️` - **Add to Favorites**.
+    2. `🛒` - **Add to Cart** 
 
-Please include a `README` with setup instructions and any other documentation you created as part of your solution.
+#### Products Page Preview
+![image](https://github.com/kamal9494/tanX-task/assets/97849725/8c14b8e8-fa2e-4cab-937d-ca959a57a6bf)
 
-Also, add very short info for the following to your `README`:
+#### Icons on Each Product Preview
+![image](https://github.com/kamal9494/tanX-task/assets/97849725/3c01cfa5-2c63-4ffc-aacc-86095e3b36c3)
 
-- Describe all the application functionalities
-- Are there any improvements you could make to your submission?
-- What would you do differently if you were allocated more time?
 
-Once you complete implementation, please add the link to the hosted repository (e.g. Github). Alternatively, you may submit your code as a ZIP file too.
 
-(NOTE: You have to use the latest version of v18 and react-router-dom v6)
 
-## How should the application work?
+### Product Description `/product/:id`
+ - User can see Complete Product Details, on the this page.
+ - There are 3 button's available with following functionalities
+    1. `❤️` - **Add to Favorites**.
+    2. `Add to Cart` - **Add to Cart** 
+    2. `Buy Now` - **Place an Order** 
 
-The user of this react application should be able to view all the products. The application should have the following workflow,
+#### Product Description Page Preview
+![image](https://github.com/kamal9494/tanX-task/assets/97849725/e517674c-3c3f-4dbe-93dc-ed01daff5f02)
 
-1. Create the login/register functionality.
-2. Once the user is authenticated
-3. Users can add the products to the cart page
-4. Also user can add their favourite products
 
-## Development Setup
+### Navbar
+![image](https://github.com/kamal9494/tanX-task/assets/97849725/198c2219-3195-44d2-a232-47d4741cd751)
 
-- Clone this repo
-- `npm install` - To install the dependencies
-- `npm run server` - To start the JSON server
-- `npm start` - To start the react app
+ - When a user adds a product to the cart, they can see the number of items present in the cart on top of the cart icon.
+ - To visit the `cart`, click the cart icon (🛒) in the navbar. 
 
-## This project's user interface should like this.
 
-### Login/Register page
+### Favourite `/favourites`
+ - Favourite products are listed on this page.
+ - To remove item from favourites click on `❤️`.
 
-<img width="1512" alt="Screenshot 2022-07-24 at 10 44 13 AM" src="https://user-images.githubusercontent.com/52570524/180701451-5ccce009-0384-426c-b1bc-d7536fd7b142.png">
+#### Favourites Page Preview
+![image](https://github.com/kamal9494/tanX-task/assets/97849725/54ca712c-97ac-4b44-9b34-a95756263f11)
 
-### Home page
 
-<img width="1512" alt="Screenshot 2022-07-24 at 10 45 58 AM" src="https://user-images.githubusercontent.com/52570524/180701523-b679c753-68ff-47f1-9a1b-f4cc04d88fea.png">
+### Cart `/cart`
+ - Increment any product quantity by clicking `+`.
+ - Decrement any product quantity by clicking `-`.
+ - Remove any product by clicking `❌`.
+ - Place order by clicking `PLACE ORDER`button.
 
-### Product detail page
+#### Cart Page Preview
+![image](https://github.com/kamal9494/tanX-task/assets/97849725/87c87c7c-f302-4c8a-a616-1d7418d00d01)
 
-<img width="675" alt="Screenshot 2022-07-24 at 10 53 17 AM" src="https://user-images.githubusercontent.com/52570524/180701655-7c3d3120-ff81-445a-81d9-b2152db8a776.png">
 
-### Cart page
+### Orders `/orders`
+ - The user is able to view every order they have placed..
 
-<img width="1415" alt="Screenshot 2022-07-24 at 10 50 18 AM" src="https://user-images.githubusercontent.com/52570524/180701661-a587033d-4616-40f8-9260-dfd3e8b97152.png">
+#### Orders Page Preview 
+![image](https://github.com/kamal9494/tanX-task/assets/97849725/cba2bce2-1f81-4cb4-9c59-368cfc7ebdf9)
 
-<img width="1472" alt="Screenshot 2022-07-24 at 10 51 16 AM" src="https://user-images.githubusercontent.com/52570524/180701674-31c7e11c-56b3-4f24-83c4-e9d582c4b3f8.png">
 
-## API Usage
 
-API can be launched using npm run server.
-| Endpoint | Result |
-|------------------------------|-----------------------------------------------------|
-| /users | Lists all available users |
-| /products | Lists all available products |
-| /orders | Lists all available orders  
-| /favourites | Lists all available favourites
-
-Refer - [JSON sever](https://www.npmjs.com/package/json-server) docs for more information
-
-## Bonus
-
-- Feel free to add functionality (not mandatory)
-- Use redux/context for state management
-- Well explained readme (screenshot etc)
-
----
