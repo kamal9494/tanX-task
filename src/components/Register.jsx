@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../redux/slices/auth";
 import { toast } from "sonner";
 
@@ -8,21 +8,31 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const loading = useSelector((state) => state.auth.registerLoading);
   const dispatch = useDispatch();
   const nav = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!name || !email || !password) {
-      toast.error("Enter details completely");
-    } else {
-      dispatch(registerUser({ email, password, name }));
-      setEmail("");
-      setPassword("");
-      setName("");
-      nav("/");
+    try {
+      const result = await dispatch(registerUser({ email, password, name }));
+      const data = result.payload;
+
+      if (!data.error) {
+        toast.success(`Logged in as ${data.user.name}`);
+        nav("/");
+        setEmail("");
+        setPassword("");
+        setName("");
+      } else {
+        toast.error(data.error.message || "Registration failed");
+      }
+    } catch (error) {
+      console.error("An error occurred during registration:", error);
+      toast.error("An unexpected error occurred. Please try again later.");
     }
   };
+
   return (
     <div className="bg-[#e5eef8] h-screen flex justify-center items-center">
       <form onSubmit={handleSubmit}>
@@ -34,31 +44,39 @@ const Register = () => {
               type="text"
               className="bg-[#f1f5f9] p-3 rounded-full w-full"
               placeholder="Name"
+              value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <input
               type="email"
               className="bg-[#f1f5f9] p-3 rounded-full w-full"
               placeholder="Email Address"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="password"
               className="bg-[#f1f5f9] p-3 rounded-full w-full"
               placeholder="Password"
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
           <div className="flex justify-between items-center">
             <p className="text-[#3a84ea]">
-              <NavLink to="/login">Already user? login here</NavLink>
+              <NavLink to="/login">Already a user? Login here</NavLink>
             </p>
             <button
               type="submit"
-              className="w-[110px] p-2 bg-[#1c73e7] text-white rounded-full"
+              className={`w-[110px] p-2 bg-[#1c73e7] text-white rounded-full ${
+                loading || !email || !password || !name
+                  ? "opacity-50 cursor-not-allowed"
+                  : ""
+              }`}
+              disabled={loading || !email || !password || !name}
             >
-              Register
+              {loading ? "Registering..." : "Register"}
             </button>
           </div>
         </div>

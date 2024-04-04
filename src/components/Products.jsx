@@ -6,6 +6,7 @@ import { addItem } from "../redux/slices/cart";
 import { addToFavs } from "../redux/slices/favorites";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
+import Loading from "./constants/Loading";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -14,8 +15,10 @@ const Products = () => {
   const isLoading = useSelector((state) => state.product?.isLoading);
 
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    if (products.length === 0) {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, products.length]);
 
   const addToCart = (product) => {
     const productDetails = {
@@ -43,7 +46,7 @@ const Products = () => {
   return (
     <div className="bg-[#e5eef8] max-h-[100%] min-h-screen flex flex-wrap gap-4 justify-center p-5">
       {isLoading ? (
-        <h2 className="text-center">Loading...</h2>
+        <Loading />
       ) : products.length === 0 ? (
         <div className="mt-10 text-xl font-semibold text-center">
           No Products

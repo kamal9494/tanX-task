@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "sonner";
-
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -20,7 +21,9 @@ const cartSlice = createSlice({
       toast.success("Item added to cart!");
     },
     removeItem: (state, action) => {
-      state.cartItems = state.cartItems.filter((item) => item.id !== action.payload.id);
+      state.cartItems = state.cartItems.filter(
+        (item) => item.id !== action.payload.id
+      );
       toast.success("Item removed!");
     },
     increaseQuantity: (state, action) => {
@@ -33,13 +36,13 @@ const cartSlice = createSlice({
       const itemIndex = state.cartItems.findIndex(
         (item) => item.id === action.payload.id
       );
-      if(itemIndex !== -1){
+      if (itemIndex !== -1) {
         const updatedItems = [...state.cartItems];
         const updatedQuantity = updatedItems[itemIndex].quantity - 1;
 
-        if(updatedQuantity <= 0){
+        if (updatedQuantity <= 0) {
           updatedItems.splice(itemIndex, 1);
-        }else{
+        } else {
           updatedItems[itemIndex].quantity = updatedQuantity;
         }
         state.cartItems = updatedItems;
@@ -47,10 +50,22 @@ const cartSlice = createSlice({
     },
     clearCart: (state, action) => {
       state.cartItems = [];
-    }
+    },
   },
 });
 
-export const { addItem, removeItem, increaseQuantity, decreaseQuantity, clearCart } = cartSlice.actions;
+export const {
+  addItem,
+  removeItem,
+  increaseQuantity,
+  decreaseQuantity,
+  clearCart,
+} = cartSlice.actions;
 
-export default cartSlice.reducer;
+const persistConfig = {
+  key: "cart",
+  storage,
+  blacklist: [],
+};
+
+export default persistReducer(persistConfig, cartSlice.reducer);

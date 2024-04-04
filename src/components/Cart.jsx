@@ -46,12 +46,12 @@ const Cart = () => {
     setIsVisible(true);
   };
   return (
-    <>
+    <div className="max-h-[100%] min-h-screen">
       {isVisible ? <OrderModal visible={isVisible} closeModal={closeModal} /> : null}
       {totalItems !== 0 ? (
         <div className="flex max-h-[100%] min-h-screen pt-5 bg-[#e5eef8] flex-col">
           <div className="flex flex-wrap gap-5 justify-center">
-            <div className="max-w-[600px] w-full min-w-[300px]">
+            <div className="max-w-[600px] flex flex-col items-center md:items-start w-full min-w-[300px]">
               <div className="bg-white shadow-md rounded-md p-4 overflow-y-auto7">
                 <h2 className="text-xl mb-3">My Cart</h2>
                 <div className="flex flex-col gap-5">
@@ -71,14 +71,14 @@ const Cart = () => {
               </div>
               {userInfo.user ? (
                 <button
-                  className="bg-[#0377ed] my-2 p-2 text-white rounded-md"
+                  className="bg-[#0377ed] w-[150px] my-2 p-2 text-white rounded-md"
                   onClick={placeOrder}
                 >
                   PLACE ORDER
                 </button>
               ) : (
                 <button
-                  className="bg-[#0377ed] my-2 p-2 text-white rounded-md"
+                  className="bg-[#0377ed] w-[200px] my-2 p-2 text-white rounded-md"
                   onClick={() => nav("/login")}
                 >
                   Login to PLACE ORDER
@@ -113,7 +113,7 @@ const Cart = () => {
           No Items in Cart
         </div>
       )}
-    </>
+    </div>
   );
 };
 

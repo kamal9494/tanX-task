@@ -8,6 +8,7 @@ import {
 } from "../redux/slices/favorites";
 import FavItem from "./constants/FavItem";
 import { FaHeart } from "react-icons/fa";
+import Loading from "./constants/Loading";
 
 const Favourites = () => {
   const dispatch = useDispatch();
@@ -16,8 +17,10 @@ const Favourites = () => {
   const userId = useSelector((state) => state.auth.user?.id);
 
   useEffect(() => {
-    dispatch(fetchFavProducts(userId));
-  }, [dispatch, userId]);
+    if (products.length === 0) {
+      dispatch(fetchFavProducts(userId));
+    }
+  }, [dispatch, userId, products.length]);
 
   const addToCart = (product) => {
     const productDetails = {
@@ -32,12 +35,12 @@ const Favourites = () => {
   };
   return (
     <>
-      <div className="bg-[#e5eef8] p-2 opacity-70 flex justify-center items-center gap-2">
+      <div className="bg-[#e5eef8] p-2 flex justify-center items-center gap-2">
         click <FaHeart className="text-red-500" /> to remove from the list
       </div>
       <div className="bg-[#e5eef8] max-h-[100%] min-h-screen flex flex-wrap gap-4 justify-center px-5">
         {loading ? (
-          <h2 className="text-center">Loading...</h2>
+          <Loading />
         ) : products.length === 0 ? (
           <div className="mt-10 text-xl font-semibold text-center">
             No Items

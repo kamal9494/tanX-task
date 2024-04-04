@@ -9,6 +9,7 @@ import { addItem } from "../redux/slices/cart";
 import { toast } from "sonner";
 import { order } from "../redux/slices/order";
 import OrderModal from "./OrderModal";
+import Loading from "./constants/Loading";
 
 const Description = () => {
   const dispatch = useDispatch();
@@ -75,55 +76,54 @@ const Description = () => {
   };
 
   return (
-    <div className="flex h-[90vh] w-full flex-col md:flex-row">
-      {isVisible ? (
-        <OrderModal visible={isVisible} closeModal={closeModal} />
-      ) : null}
-      {isLoading && (
-        <div className="text-center text-xl font-bold"> Loading...</div>
-      )}
-      {!isLoading && product && (
-        <>
-          <div className="p-10 md:w-[50%] w-full flex justify-center items-center">
-            <img
-              src={product.image}
-              alt="pic"
-              className="min-w-[250px] max-w-[400px]"
-            />
+    <div className="flex flex-col md:flex-row justify-center items-center md:h-[90vh] w-full">
+  {isVisible && (
+    <OrderModal visible={isVisible} closeModal={closeModal} />
+  )}
+  {isLoading && <Loading />}
+  {!isLoading && product && (
+    <>
+      <div className="md:w-[50%] w-full p-5 md:p-10 flex justify-center items-center">
+        <img
+          src={product.image}
+          alt="pic"
+          className="min-w-[250px] max-w-[400px] object-cover"
+        />
+      </div>
+      <div className="md:w-[50%] w-full p-5 md:p-10 flex flex-col justify-around">
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center justify-between">
+            <h1 className="text-3xl">{product.title}</h1>
+            <span className="bg-gray-300 p-2 h-fit rounded-full">
+              <FaHeart
+                className="text-gray-600 cursor-pointer"
+                size={24}
+                onClick={() => addToFavourites(product)}
+              />
+            </span>
           </div>
-          <div className="flex md:w-[50%] p-10 w-full flex-col justify-around">
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center justify-between">
-                <h1 className="text-3xl">{product.title}</h1>
-                <span className="bg-gray-300 p-2 h-fit rounded-full">
-                  <FaHeart
-                    className="text-gray-600 cursor-pointer"
-                    size={24}
-                    onClick={() => addToFavourites(product)}
-                  />
-                </span>
-              </div>
-              <p className="text-gray-500 text-md">{product.description}</p>
-              <span className="font-bold text-3xl">₹ {product.amount}</span>
-            </div>
-            <div className="flex flex-wrap justify-center md:justify-evenly px-5 md:px-14 mt-5 gap-4">
-              <button
-                className="border-2 border-black w-[150px] px-6 py-4"
-                onClick={placeOrder}
-              >
-                Buy Now
-              </button>
-              <button
-                className="border-2 border-black w-[150px] text-white bg-black px-6 py-4"
-                onClick={() => addToCart(product)}
-              >
-                Add to cart
-              </button>
-            </div>
-          </div>
-        </>
-      )}
-    </div>
+          <p className="text-gray-500 text-md">{product.description}</p>
+          <span className="font-bold text-3xl">₹ {product.amount}</span>
+        </div>
+        <div className="flex flex-wrap justify-center md:justify-evenly px-5 md:px-14 mt-5 gap-4">
+          <button
+            className="border-2 border-black w-[150px] md:w-auto px-6 py-4"
+            onClick={placeOrder}
+          >
+            Buy Now
+          </button>
+          <button
+            className="border-2 border-black w-[150px] md:w-auto text-white bg-black px-6 py-4"
+            onClick={() => addToCart(product)}
+          >
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </>
+  )}
+</div>
+
   );
 };
 
