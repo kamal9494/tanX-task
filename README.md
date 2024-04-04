@@ -11,6 +11,12 @@
 
 Successfully Deployed at https://tanx-task.vercel.app/  (with working backend)
 
+Sample Credentials :
+```bash 
+Email : temp@temp.com
+Password : 1234
+```
+
 
 ## Features
 
