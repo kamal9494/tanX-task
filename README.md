@@ -1,6 +1,7 @@
 ## Technologies Used
 - React.js
-- Redux Toolkit -  state management
+- Redux Toolkit
+- Redux Persist
 - Axios - API calling
 - React Router
 - JSON Server
@@ -19,7 +20,7 @@ Successfully Deployed at https://tanx-task.vercel.app/  (with working backend)
  - Implemented basic validation. After successful login or signup user will navigate to `/`. (products page)
  - In order to access the `/favourites`, `/orders` pages or `to place an order` user should login first.
 
-### Screenshots
+### Preview
 #### Login Page
 ![image](https://github.com/kamal9494/tanX-task/assets/97849725/056df49b-d05a-4dab-8b60-d348a0f278db)
 
@@ -35,7 +36,7 @@ Successfully Deployed at https://tanx-task.vercel.app/  (with working backend)
     2. `🛒` - **Add to Cart**
     3. Click on any product picture to open its description page.
  
-### Screenshots
+### Preview
 #### Products Page
 ![image](https://github.com/kamal9494/tanX-task/assets/97849725/8c14b8e8-fa2e-4cab-937d-ca959a57a6bf)
 
@@ -52,7 +53,7 @@ Successfully Deployed at https://tanx-task.vercel.app/  (with working backend)
     2. `Add to Cart` - **Add to Cart** 
     2. `Buy Now` - **Place an Order** 
 
-### Screenshots
+### Preview
 #### Product Description Page 
 ![image](https://github.com/kamal9494/tanX-task/assets/97849725/e517674c-3c3f-4dbe-93dc-ed01daff5f02)
 
@@ -63,7 +64,7 @@ Successfully Deployed at https://tanx-task.vercel.app/  (with working backend)
  - To visit the `cart`, click the cart icon (🛒) in the navbar.
  - favourites, orders are visible in navbar only if the user is logged in.
 
-### Screenshots
+### Preview
 ![image](https://github.com/kamal9494/tanX-task/assets/97849725/198c2219-3195-44d2-a232-47d4741cd751)
 
 <hr>
@@ -72,7 +73,7 @@ Successfully Deployed at https://tanx-task.vercel.app/  (with working backend)
  - Favourite products are listed on this page.
  - To remove item from favourites click on `❤️`.
 
-### Screenshots
+### Preview
 #### Favourites Page 
 ![image](https://github.com/kamal9494/tanX-task/assets/97849725/54ca712c-97ac-4b44-9b34-a95756263f11)
 
@@ -83,8 +84,9 @@ Successfully Deployed at https://tanx-task.vercel.app/  (with working backend)
  - Decrement any product quantity by clicking `-`.
  - Remove any product by clicking `❌`.
  - Place order by clicking `PLACE ORDER`button.
+ - Used React Persist to save cart items.
 
-### Screenshots
+### Preview
 #### Cart Page
 ![image](https://github.com/kamal9494/tanX-task/assets/97849725/87c87c7c-f302-4c8a-a616-1d7418d00d01)
 
@@ -96,7 +98,7 @@ Successfully Deployed at https://tanx-task.vercel.app/  (with working backend)
 ### Orders `/orders`
  - The user is able to view every order they have placed..
 
-### Screenshots
+### Preview
 #### Orders Page 
 ![image](https://github.com/kamal9494/tanX-task/assets/97849725/cba2bce2-1f81-4cb4-9c59-368cfc7ebdf9)
 
@@ -105,10 +107,19 @@ Successfully Deployed at https://tanx-task.vercel.app/  (with working backend)
 ## 
 
 ## Development Setup
-- Clone this repo
-- `npm install` - To install the dependencies
-- `npm run server` - To start the JSON server
-- `npm start` - To start the react app
+- Clone this repository.
+
+Frontend
+```bash 
+npm install
+npm start
+```
+Server
+```bash 
+npm install
+npm run server
+```
+
 - I used  `"json-server": "^0.17.4"` -D
 
 
