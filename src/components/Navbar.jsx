@@ -35,7 +35,7 @@ const Navbar = () => {
       <div
         id="nav"
         ref={nav}
-        className="bg-[#0477ec] text-white w-full flex justify-between items-center h-[60px] max-w-[1640px] max-auto px-4"
+        className="bg-[#0477ec] text-white w-full flex justify-between items-center h-[60px] max-w-full max-auto px-4"
       >
         <h3 className="text-2xl ml-20 font-bold cursor-pointer">
           <NavLink to="/">ShopKart.</NavLink>
