@@ -16,16 +16,20 @@ const Register = () => {
     e.preventDefault();
     try {
       const result = await dispatch(registerUser({ email, password, name }));
-      const data = result.payload;
+      const data = result?.payload;
+      const error = result?.error;
 
-      if (!data.error) {
+      if(error) {
+        toast.error(error.message || "Registration failed");
+        return;
+      }
+
+      if (data) {
         toast.success(`Logged in as ${data.user.name}`);
         nav("/");
         setEmail("");
         setPassword("");
         setName("");
-      } else {
-        toast.error(data.error.message || "Registration failed");
       }
     } catch (error) {
       console.error("An error occurred during registration:", error);

@@ -15,15 +15,20 @@ const Login = () => {
     e.preventDefault();
     try {
       const result = await dispatch(loginUser({ email, password }));
-      const data = result.payload;
+      const data = result?.payload;
+      const error = result?.error;
 
-      if (!data.error) {
+      if(error) {
+        toast.error(error.message || "Login failed. Please check your credentials");
+        return;
+      }
+      
+
+      if (data) {
         toast.success(`Logged in as ${data.user.name}`);
         nav("/");
         setEmail("");
         setPassword("");
-      } else {
-        toast.error(data.error.message || "Login failed. Please check your credentials.");
       }
     } catch (error) {
       console.error("An error occurred during login:", error);
