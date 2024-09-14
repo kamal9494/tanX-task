@@ -3,7 +3,7 @@ import makeApiCall from "../../api";
 
 export const fetchProducts = createAsyncThunk("fetchProducts", async () => {
   try {
-    const url = "http://localhost:5000/products";
+    const url = "https://fake-server-tanx.vercel.app/products";
     const method = "GET";
     const response = await makeApiCall(url, method, null);
     return response.data;

@@ -22,7 +22,7 @@ const Description = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const url = `http://localhost:5000/products?id=${id}`;
+        const url = `https://fake-server-tanx.vercel.app/products?id=${id}`;
         const method = "GET";
         const result = await makeApiCall(url, method, null);
         setProduct(result.data[0]);

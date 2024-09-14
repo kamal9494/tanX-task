@@ -6,7 +6,7 @@ export const fetchFavProducts = createAsyncThunk(
   "fetchFavProducts",
   async (userId) => {
     try {
-      const url = `http://localhost:5000/favourites?userId=${userId}`;
+      const url = `https://fake-server-tanx.vercel.app/favourites?userId=${userId}`;
       const method = "GET";
       const response = await makeApiCall(url, method, null);
       return response.data;
@@ -18,7 +18,7 @@ export const fetchFavProducts = createAsyncThunk(
 
 export const addToFavs = createAsyncThunk("addToFavs", async (product) => {
   try {
-    const url = `http://localhost:5000/favourites`;
+    const url = `https://fake-server-tanx.vercel.app/favourites`;
     const method = "POST";
     const response = await makeApiCall(url, method, product);
     return response;
@@ -29,7 +29,7 @@ export const addToFavs = createAsyncThunk("addToFavs", async (product) => {
 
 export const removeFav = createAsyncThunk("removeFav", async (id) => {
   try {
-    const url = `http://localhost:5000/favourites/${id}`;
+    const url = `https://fake-server-tanx.vercel.app/favourites/${id}`;
     const method = "DELETE";
     await makeApiCall(url, method, null);
     return id;

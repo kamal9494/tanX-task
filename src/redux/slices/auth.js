@@ -13,7 +13,7 @@ const initialState = {
 
 const registerUser = createAsyncThunk("auth/registerUser", async (userData) => {
   try {
-    const url = "http://localhost:5000/register";
+    const url = "https://fake-server-tanx.vercel.app/register";
     const method = "POST";
     const response = await makeApiCall(url, method, userData);
     return response.data;
@@ -25,7 +25,7 @@ const registerUser = createAsyncThunk("auth/registerUser", async (userData) => {
 
 const loginUser = createAsyncThunk("auth/loginUser", async (userData) => {
   try {
-    const url = "http://localhost:5000/login";
+    const url = "https://fake-server-tanx.vercel.app/login";
     const method = "POST";
     const response = await makeApiCall(url, method, userData);
     return response.data;

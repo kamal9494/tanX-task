@@ -8,7 +8,7 @@ const cookies = new Cookies();
 export const fetchOrders = createAsyncThunk("fetchOrders", async () => {
   const user = cookies.get("user");
   try {
-    const url = `http://localhost:5000/orders?userId=${user.id}`;
+    const url = `https://fake-server-tanx.vercel.app/orders?userId=${user.id}`;
     const method = "GET";
     const response = await makeApiCall(url, method, null);
     return response.data;
@@ -20,7 +20,7 @@ export const fetchOrders = createAsyncThunk("fetchOrders", async () => {
 
 export const order = createAsyncThunk("order", async (product) => {
   try {
-    const url = `http://localhost:5000/orders`;
+    const url = `https://fake-server-tanx.vercel.app/orders`;
     const method = "POST";
     const response = await makeApiCall(url, method, product);
     return response.data;
