@@ -93,7 +93,7 @@ const Cart = () => {
               </div>
               <div className="flex justify-between text-sm">
                 <span>Discount Price</span>
-                <span>-100</span>
+                <span>-200</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span>Delivery Charge</span>
@@ -103,7 +103,7 @@ const Cart = () => {
 
               <div className="flex font-semibold justify-between text-md">
                 <span>Total</span>
-                <span>{price + 50}</span>
+                <span>{(Number(price) + 50) - 200}</span>
               </div>
             </div>
           </div>
