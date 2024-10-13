@@ -93,17 +93,17 @@ const Cart = () => {
               </div>
               <div className="flex justify-between text-sm">
                 <span>Discount Price</span>
-                <span>100</span>
+                <span>-100</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span>Delivery Charge</span>
-                <span>50</span>
+                <span>+50</span>
               </div>
               <hr className=" border-gray-500" />
 
               <div className="flex font-semibold justify-between text-md">
                 <span>Total</span>
-                <span>{price + 150}</span>
+                <span>{price + 50}</span>
               </div>
             </div>
           </div>
