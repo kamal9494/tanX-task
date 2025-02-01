@@ -60,7 +60,7 @@ const favouritesSlice = createSlice({
       state.error = action.error.message;
     });
     builder.addCase(addToFavs.fulfilled, (state, action) => {
-      state.favouritesList.push(action.payload);
+      state.favouritesList.push(action.payload.data);
       toast.success("Item added to Favorites");
     });
     builder.addCase(removeFav.fulfilled, (state, action) => {

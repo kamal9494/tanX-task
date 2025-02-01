@@ -17,10 +17,8 @@ const Favourites = () => {
   const userId = useSelector((state) => state.auth.user?.id);
 
   useEffect(() => {
-    if (products.length === 0) {
-      dispatch(fetchFavProducts(userId));
-    }
-  }, [dispatch, userId, products.length]);
+    dispatch(fetchFavProducts(userId));
+  }, [userId]);
 
   const addToCart = (product) => {
     const productDetails = {
