@@ -10,10 +10,8 @@ const Orders = () => {
   const isLoading = useSelector((state) => state.orders.loading);
 
   useEffect(() => {
-    if (orders.length === 0) {
-      dispatch(fetchOrders());
-    }
-  }, [dispatch, orders.length]);
+    dispatch(fetchOrders());
+  }, [dispatch]);
 
   const Order = ({ order }) => {
     return (
